@@ -4,7 +4,7 @@
   margin-top: 2.5em;
 }
 
-.movie-card__thumbnail {
+.movie-card__post {
   max-width: 25%;
   object-fit: cover;
 }
@@ -40,9 +40,15 @@
   margin: 0;
   font-weight: 400;
   font-family: Abel;
-  font-size: 3.5em;
+  font-size: 3em;
   color: var(--secondary);
   margin-left: 1rem;
+
+  /* Limita o número de linhas em 1 */
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .movie-date {
@@ -64,7 +70,7 @@
   overflow: hidden;
 }
 
-.movie-card__description {
+.movie-card__overview {
   margin: 0;
 }
 

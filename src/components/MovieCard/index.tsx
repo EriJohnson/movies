@@ -1,38 +1,38 @@
-import GenreList from '../GenreList';
+import { Movie } from '../../entities/Movie';
+import { formatDate } from '../../utils/formatDate';
 import PercentageDisplay from '../PercentageDisplay';
 import './styles.css';
 
-export function MovieCard() {
+interface MovieCardProps {
+  movie: Movie;
+}
+
+export function MovieCard({ movie }: MovieCardProps) {
+  const postImage = 'https://image.tmdb.org/t/p/w500/' + movie.poster_path;
+
   return (
     <article className="movie-card">
-      <img
-        className="movie-card__thumbnail"
-        src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fQea7XBIBXggaR8sDp0XjJ92q5g.jpg"
-      />
+      <img className="movie-card__post" src={postImage} />
 
       <div className="movie-card__content">
         <header className="movie-card__header">
           <div className="movie-card__header__inner">
-            <PercentageDisplay value="75%" />
+            <PercentageDisplay value={movie.vote_average} />
 
             <div>
-              <h3 className="movie-card__title">Thor: Ragnarok</h3>
-              <p className="movie-date">25/10/2017</p>
+              <h3 className="movie-card__title">{movie?.title}</h3>
+              <p className="movie-date">{formatDate(movie.release_date)}</p>
             </div>
           </div>
         </header>
 
         <section className="movie-card__body">
-          <p className="movie-card__description">
-            Thor está preso do outro lado do universo. Ele precisa correr contra
-            o tempo para voltar a Asgard e parar Ragnarok, a destruição de seu
-            mundo, que está nas mãos da poderosa e implacável vilã Hela.
-          </p>
+          <p className="movie-card__overview">{movie.overview}</p>
         </section>
 
-        <section className="movie-card__footer">
+        {/* <section className="movie-card__footer">
           <GenreList />
-        </section>
+        </section> */}
       </div>
     </article>
   );

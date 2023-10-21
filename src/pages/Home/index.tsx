@@ -1,3 +1,10 @@
+import { MovieCard } from '../../components/MovieCard';
+import './styles.css';
+
 export function Home() {
-  return <div>Home</div>;
+  return (
+    <div className="home">
+      <MovieCard />
+    </div>
+  );
 }

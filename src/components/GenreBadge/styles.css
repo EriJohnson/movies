@@ -1,0 +1,11 @@
+.genre-badge {
+  background: #ffffff;
+  border-top-left-radius: 25%;
+  border-top-right-radius: 25%;
+  padding: 0.25rem 1rem;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: 2rem;
+  font-family: Abel;
+  font-size: 1.5rem;
+}

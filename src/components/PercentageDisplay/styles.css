@@ -1,0 +1,22 @@
+.percentage-display {
+  width: 7.75rem;
+  height: 7.75rem;
+  border-radius: 50%;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.percentage-display__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  border: 0.5rem solid var(--secondary);
+  color: var(--secondary);
+  font-family: Abel;
+  font-size: 2.5rem;
+}

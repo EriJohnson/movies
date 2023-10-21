@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+:root {
+  --primary: #116193;
+  --secondary: #02d9db;
+  --header-height: 6rem;
+}
+
+body {
+  font-family: Lato;
+}

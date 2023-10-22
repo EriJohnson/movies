@@ -1,0 +1,15 @@
+.movie-details__informations-title {
+  font-family: Abel;
+  color: var(--primary);
+  font-weight: 400;
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+
+.movie-details__information-item {
+  font-family: Lato;
+  color: #848484;
+  font-weight: 500;
+  font-size: 1rem;
+  margin: 0;
+}

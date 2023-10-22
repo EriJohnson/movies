@@ -8,7 +8,8 @@ header {
 
 .main-title {
   font-family: Abel;
-  font-size: 4rem;
+  font-size: 3.5rem;
   color: var(--secondary);
   font-weight: 400;
+  text-decoration: none;
 }

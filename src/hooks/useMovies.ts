@@ -27,7 +27,7 @@ export function useMovies() {
         apiData.page * API_PER_PAGE
       ) {
         const newApiPage = apiData.page + 1;
-        const response = await moviesService.getAll(newApiPage);
+        const response = await moviesService.findAll(newApiPage);
 
         // Atualize os resultados da API e o número da página.
         setApiData({

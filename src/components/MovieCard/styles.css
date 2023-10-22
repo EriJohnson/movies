@@ -5,8 +5,17 @@
 }
 
 .movie-card__post {
-  max-width: 25%;
+  display: flex;
+  overflow: hidden;
+}
+
+.movie-card__post img {
   object-fit: cover;
+  transition: transform 0.5s ease-in-out;
+}
+
+.movie-card__post img:hover {
+  transform: scale(1.1);
 }
 
 .movie-card__content {

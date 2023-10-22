@@ -5,11 +5,11 @@ interface PercentageDisplayProps {
 }
 
 export default function PercentageDisplay({ value }: PercentageDisplayProps) {
-  const percentVote = value * 10 + '%';
+  const parsedValue = (value * 10).toFixed(0) + '%';
 
   return (
     <div className="percentage-display">
-      <div className="percentage-display__inner">{percentVote}</div>
+      <div className="percentage-display__inner">{parsedValue}</div>
     </div>
   );
 }

@@ -1,5 +1,7 @@
-import { getAll } from './getAll';
+import { findAll } from './findAll';
+import { findOne } from './findOne';
 
 export const moviesService = {
-  getAll,
+  findAll,
+  findOne,
 };

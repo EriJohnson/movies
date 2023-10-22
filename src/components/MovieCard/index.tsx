@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Movie } from '../../entities/Movie';
 import { formatDate } from '../../utils/formatDate';
 import PercentageDisplay from '../PercentageDisplay';
@@ -12,7 +13,9 @@ export function MovieCard({ movie }: MovieCardProps) {
 
   return (
     <article className="movie-card">
-      <img className="movie-card__post" src={postImage} />
+      <Link to={String(movie.id)} className="movie-card__post">
+        <img src={postImage} />
+      </Link>
 
       <div className="movie-card__content">
         <header className="movie-card__header">

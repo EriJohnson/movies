@@ -1,0 +1,70 @@
+.movie-details {
+  padding: 3rem 0;
+}
+
+.movie-details__header {
+  display: flex;
+  justify-content: space-between;
+  background: #e6e6e6;
+  padding-left: 3rem;
+  padding-right: 2rem;
+}
+
+.movie-details__title {
+  font-family: Abel;
+  color: var(--primary);
+  font-weight: 400;
+  font-size: 3rem;
+}
+
+.movie-details__release-date {
+  font-family: Lato;
+  color: #bfbfbf;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.movie-details__body {
+  display: flex;
+  background: #f2f2f2;
+}
+
+.movie-details__content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 3rem;
+  padding-right: 2rem;
+  gap: 3rem;
+}
+
+.movie-details__title-section {
+  font-family: Abel;
+  color: var(--primary);
+  font-weight: 400;
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+
+.movie-details__divider {
+  background: #89eeec;
+  border: none;
+  height: 4px;
+}
+
+.movie-details__overview {
+  font-family: Lato;
+  color: #818181;
+  font-size: 1.5rem;
+}
+
+.movie-details__genre-list {
+  display: flex;
+  padding: 0;
+  list-style: none;
+  gap: 0.75rem;
+}
+
+.movie-details__footer {
+  display: flex;
+  justify-content: space-between;
+}

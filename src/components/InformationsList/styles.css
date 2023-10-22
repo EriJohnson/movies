@@ -1,0 +1,8 @@
+.movie-details__informations-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  text-align: center;
+  gap: 2rem;
+}

@@ -8,9 +8,15 @@ interface MoviesResponse {
   results: Movie[];
 }
 
-export async function findAll(page: number) {
-  const { data } = await httpClient.get<MoviesResponse>('/movie/popular', {
+interface SearchServiceParams {
+  page: number;
+  search?: string;
+}
+
+export async function search({ page, search }: SearchServiceParams) {
+  const { data } = await httpClient.get<MoviesResponse>('/search/movie', {
     params: {
+      query: search,
       page,
     },
   });

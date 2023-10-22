@@ -9,8 +9,6 @@ export function InformationsListItem({
   title,
   value,
 }: InformationsListItemProps) {
-  console.log('value', value);
-
   if (!value) return null;
 
   return (

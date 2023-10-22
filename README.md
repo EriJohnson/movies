@@ -1,27 +1,41 @@
-# React + TypeScript + Vite
+# Movies
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Tecnologias
 
-Currently, two official plugins are available:
+O projete foi desenvolvido usando:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Vite;
+- React;
+- TypeScript;
 
-## Expanding the ESLint configuration
+## Rodar Aplicação:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Para rodar a aplicação você vai primeiro ter que fazer cadastro na [API do The Movie DB](https://www.themoviedb.org/documentation/api)
+E obter uma chave de api;
 
-- Configure the top-level `parserOptions` property like this:
+- Clone esse repositório;
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+- Instale as dependências:
+
+#### Configurando variáveis de ambiente
+
+- Faça uma cópia do arquivo .env.example **na raiz do projeto**,dê o nome de .env e informe suaa API Key;
+
+> .env deve ficar dessa maneira
+
+```
+VITE_API_URL=https://api.themoviedb.org/3
+VITE_API_KEY={sua_chave_da_api}
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Iniciando
+
+#### Instale as dependências
+
+> npm install
+
+#### Inicie o servidor local
+
+> npm run dev
+
+

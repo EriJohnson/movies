@@ -1,17 +1,24 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Movie } from '../entities/Movie';
-import { moviesService } from '../services/moviesService';
-import { genresService } from '../services/genresService';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { Genre } from '../entities/Genre';
+import { Movie } from '../entities/Movie';
+import { genresService } from '../services/genresService';
+import { moviesService } from '../services/moviesService';
 import formatMovies from '../utils/formatMovies';
 
 const APP_PAGINATION = 5;
 const MOVIE_DB_API_PAGINATION = 20;
 
 export function useMovies() {
+  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams(location.search);
+
+  const pageQuery = Number(searchParams.get('page') || 1);
+  const searchQuery = searchParams.get('search');
+
+  const [currentPage, setCurrentPage] = useState(pageQuery);
+
   const [movies, setMovies] = useState<Movie[]>();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [search, setSearch] = useState('');
   const [genres, setGenres] = useState<Genre[]>([]);
 
   useEffect(() => {
@@ -19,7 +26,7 @@ export function useMovies() {
   }, [currentPage]);
 
   useEffect(() => {
-    async function getGenres() {
+    async function fetchGenres() {
       if (!genres.length) {
         const response = await genresService.findAll();
 
@@ -27,16 +34,21 @@ export function useMovies() {
       }
     }
 
-    getGenres();
+    fetchGenres();
   }, []);
 
   useEffect(() => {
-    async function getMovies() {
+    async function fetchMovies() {
+      const currentPage = Number(pageQuery);
+
       const newApiPage = Math.trunc(currentPage / APP_PAGINATION + 1);
 
+      const search = searchParams.get('search');
+      const page = newApiPage;
+
       const response = search
-        ? await moviesService.search({ page: newApiPage, search })
-        : await moviesService.findAll(newApiPage);
+        ? await moviesService.search({ search, page })
+        : await moviesService.findAll(page);
 
       // Calcula o índice inicial e final para exibir os 5 filmes da página atual.
       const apiPageIndex =
@@ -54,24 +66,45 @@ export function useMovies() {
       setMovies(formattedMovies);
     }
 
-    if (genres.length) getMovies();
-  }, [currentPage, search, genres]);
+    if (genres.length) {
+      fetchMovies();
+    }
+  }, [pageQuery, searchQuery, genres.length]);
 
-  const handleSeaarchChange = useCallback((value: string) => {
-    setSearch(value);
-
-    setCurrentPage(1);
+  const handleSearchChange = useCallback((value: string) => {
+    if (value) {
+      setSearchParams({
+        search: value,
+        page: String(1),
+      });
+    }
   }, []);
 
-  function handleNextPage() {
-    setCurrentPage(currentPage + 1);
-  }
+  function handlePageChange(newPage: number) {
+    if (newPage >= 1) {
+      setCurrentPage(newPage);
 
-  function haandlePreviousPage() {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+      if (searchQuery) {
+        return setSearchParams({ search: searchQuery, page: String(newPage) });
+      }
+
+      return setSearchParams({ page: String(newPage) });
     }
   }
 
-  return { movies, handleSeaarchChange, handleNextPage, haandlePreviousPage };
+  function handleNextPage() {
+    handlePageChange(currentPage + 1);
+  }
+
+  function handlePreviousPage() {
+    handlePageChange(currentPage - 1);
+  }
+
+  return {
+    movies,
+    searchQuery,
+    handleSearchChange,
+    handleNextPage,
+    handlePreviousPage,
+  };
 }

@@ -5,7 +5,7 @@ export function Header() {
   return (
     <header>
       <h1>
-        <Link className="main-title" to="/">
+        <Link className="main-title" to="/?page=1">
           Movies
         </Link>
       </h1>

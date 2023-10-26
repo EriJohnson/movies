@@ -10,7 +10,7 @@ interface MoviesResponse {
 
 interface SearchServiceParams {
   page: number;
-  search?: string;
+  search?: string | null;
 }
 
 export async function search({ page, search }: SearchServiceParams) {

@@ -1,6 +1,7 @@
 import { MovieCard } from '../../components/MovieCard';
 import SearchInput from '../../components/SearchInput';
 import { useMovies } from '../../hooks/useMovies';
+
 import './styles.css';
 
 export function Home() {

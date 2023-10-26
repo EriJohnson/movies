@@ -31,7 +31,7 @@ export default function SearchInput({ onChange }: SearchInputProps) {
       value={value}
       onChange={handleChange}
       onKeyDown={handleSearchInputKeyDown}
-      placeholder="Busque um filme por nome ou gênero..."
+      placeholder="Busque um filme por nome..."
     />
   );
 }

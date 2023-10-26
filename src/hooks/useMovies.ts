@@ -1,63 +1,66 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Movie } from '../entities/Movie';
 import { moviesService } from '../services/moviesService';
+import { genresService } from '../services/genresService';
+import { Genre } from '../entities/Genre';
+import formatMovies from '../utils/formatMovies';
 
-const MOVIES_PER_PAGE = 5;
-
-interface ApiData {
-  page: number;
-  results: Movie[];
-}
+const APP_PAGINATION = 5;
+const MOVIE_DB_API_PAGINATION = 20;
 
 export function useMovies() {
   const [movies, setMovies] = useState<Movie[]>();
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState('');
+  const [genres, setGenres] = useState<Genre[]>([]);
 
-  const [apiData, setApiData] = useState<ApiData>({
-    page: 0,
-    results: [],
-  });
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
+  useEffect(() => {
+    async function getGenres() {
+      if (!genres.length) {
+        const response = await genresService.findAll();
+
+        setGenres(response?.genres);
+      }
+    }
+
+    getGenres();
+  }, []);
 
   useEffect(() => {
     async function getMovies() {
-      const newApiPage = apiData.page + 1;
+      const newApiPage = Math.trunc(currentPage / APP_PAGINATION + 1);
 
       const response = search
         ? await moviesService.search({ page: newApiPage, search })
         : await moviesService.findAll(newApiPage);
 
-      const newMovies = [...response.results, ...apiData.results];
-
       // Calcula o índice inicial e final para exibir os 5 filmes da página atual.
-      const startIndex = (currentPage - 1) * MOVIES_PER_PAGE;
+      const apiPageIndex =
+        (currentPage - 1) % (MOVIE_DB_API_PAGINATION / APP_PAGINATION);
 
-      const endIndex = startIndex + MOVIES_PER_PAGE;
+      const startIndex = apiPageIndex * APP_PAGINATION;
+
+      const endIndex = startIndex + APP_PAGINATION;
 
       // Define os filmes a serem exibidos na página atual.
-      const slicedMovies = newMovies.slice(startIndex, endIndex);
+      const slicedMovies = response.results.slice(startIndex, endIndex);
 
-      setMovies(slicedMovies);
+      const formattedMovies = formatMovies(slicedMovies, genres);
 
-      // Atualize os resultados da API e o número da página.
-      setApiData({
-        page: newApiPage,
-        results: [...apiData.results, ...response.results],
-      });
+      setMovies(formattedMovies);
     }
 
-    getMovies();
-  }, [currentPage, search]);
+    if (genres.length) getMovies();
+  }, [currentPage, search, genres]);
 
   const handleSeaarchChange = useCallback((value: string) => {
     setSearch(value);
 
     setCurrentPage(1);
-
-    setApiData({
-      page: 0,
-      results: [],
-    });
   }, []);
 
   function handleNextPage() {

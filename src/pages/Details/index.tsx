@@ -7,7 +7,7 @@ import { MovieDetails } from '../../entities/MovieDetails';
 import { moviesService } from '../../services/moviesService';
 import { formatCurrency } from '../../utils/formatCurrency';
 import { formatDate } from '../../utils/formatDate';
-import PercentageDisplay from '../../components/PercentageDisplay';
+import VoteAverageDisplay from '../../components/VoteAverageDisplay';
 
 import './styles.css';
 
@@ -102,7 +102,7 @@ export function Details() {
                   ))}
                 </ul>
 
-                <PercentageDisplay value={movieDetails?.vote_average} />
+                <VoteAverageDisplay value={movieDetails?.vote_average} />
               </footer>
             </main>
 

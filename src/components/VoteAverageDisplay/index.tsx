@@ -1,10 +1,10 @@
 import './styles.css';
 
-interface PercentageDisplayProps {
+interface VoteAverageDisplayProps {
   value: number;
 }
 
-export default function PercentageDisplay({ value }: PercentageDisplayProps) {
+export default function VoteAverageDisplay({ value }: VoteAverageDisplayProps) {
   const parsedValue = (value * 10).toFixed(0) + '%';
 
   return (

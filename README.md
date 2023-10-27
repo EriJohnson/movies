@@ -1,41 +1,46 @@
 # Movies
 
-## Tecnologias
+## Funcionalidades ✅
+- [x] Permitir buscar filmes por nome; 
+- [x] Resultados de busca paginados, 5 por página; 
+- [x] Exibir nos resultados da busca: nome, cartaz, data de lançamento, sinopse, pontuação do filme e categorias; 
+- [x] Mostrar detalhes de um filme;
+- [x] Responsividade na página da home.
 
-O projete foi desenvolvido usando:
+## Tecnologias utilizadas
+- React.js
+- Typescript
+- Axios
 
-- Vite;
-- React;
-- TypeScript;
+## Pré-requisitos
 
-## Rodar Aplicação:
+Faça o cadastro na [API do The Movie DB](https://www.themoviedb.org/documentation/api) para obter uma chave de api;
 
-- Para rodar a aplicação você vai primeiro ter que fazer cadastro na [API do The Movie DB](https://www.themoviedb.org/documentation/api)
-E obter uma chave de api;
+## Como executar
+Antes de tudo, na sua máquina deverá ter:
+- Node.js
+- Git
 
-- Clone esse repositório;
+- crie um arquivo `.env` com suas chave de api seguindo o exemplo do arquivo `.env.example`.
 
-- Instale as dependências:
+- instalale as dependências do projeto
 
-#### Configurando variáveis de ambiente
+### 
+```bash
+$ cd movies
 
-- Faça uma cópia do arquivo .env.example **na raiz do projeto**,dê o nome de .env e informe suaa API Key;
-
-> .env deve ficar dessa maneira
+$ npm install
 
 ```
-VITE_API_URL=https://api.themoviedb.org/3
-VITE_API_KEY={sua_chave_da_api}
+
+Aqui será preciso criar um arquivo `.env` seguindo o exemplo do arquivo `.env.example`.
+
+```bash
+$ npm run dev
 ```
 
-### Iniciando
-
-#### Instale as dependências
-
-> npm install
-
-#### Inicie o servidor local
-
-> npm run dev
+## Funcionalidades a serem implementadas ❌
+- [ ] Permitir buscar filmes por gênero; 
+- [ ] Responsividade na página de detalhes do filme.
 
 

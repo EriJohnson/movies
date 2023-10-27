@@ -3,3 +3,8 @@
   max-width: 1366px;
   margin: 0 auto;
 }
+
+.home footer {
+  display: flex;
+  justify-content: center;
+}

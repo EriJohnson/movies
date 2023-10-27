@@ -1,11 +1,12 @@
 import { MovieCard } from '../../components/MovieCard';
+import { Paginate } from '../../components/Paginate';
 import SearchInput from '../../components/SearchInput';
 import { useMovies } from '../../hooks/useMovies';
 
 import './styles.css';
 
 export function Home() {
-  const { movies, handleNextPage, handlePreviousPage, handleSearchChange } =
+  const { movies, pageCount, pageQuery, handleSearchChange, handlePageChange } =
     useMovies();
 
   return (
@@ -16,10 +17,13 @@ export function Home() {
         <MovieCard key={movie.id} movie={movie} />
       ))}
 
-      <div>
-        <button onClick={handlePreviousPage}>Previous Page</button>
-        <button onClick={handleNextPage}>Next Page</button>
-      </div>
+      <footer>
+        <Paginate
+          initialPage={Number(pageQuery) - 1}
+          pageCount={pageCount}
+          onPageChange={handlePageChange}
+        />
+      </footer>
     </div>
   );
 }

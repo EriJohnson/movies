@@ -13,13 +13,14 @@ export function useMovies() {
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams(location.search);
 
-  const pageQuery = Number(searchParams.get('page') || 1);
-  const searchQuery = searchParams.get('search');
+  const pageQuery = searchParams.get('page') || '';
+  const searchQuery = searchParams.get('search') || '';
 
-  const [currentPage, setCurrentPage] = useState(pageQuery);
+  const [currentPage, setCurrentPage] = useState(pageQuery || 1);
 
   const [movies, setMovies] = useState<Movie[]>();
   const [genres, setGenres] = useState<Genre[]>([]);
+  const [pageCount, setPageCount] = useState(1);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -64,6 +65,7 @@ export function useMovies() {
       const formattedMovies = formatMovies(slicedMovies, genres);
 
       setMovies(formattedMovies);
+      setPageCount(Math.ceil(response.total_results / APP_PAGINATION));
     }
 
     if (genres.length) {
@@ -77,10 +79,19 @@ export function useMovies() {
         search: value,
         page: String(1),
       });
+
+      return;
     }
+
+    setSearchParams({
+      search: searchQuery || '',
+      page: String(pageQuery || 1),
+    });
   }, []);
 
-  function handlePageChange(newPage: number) {
+  function handlePageChange(selectedItem: { selected: number }) {
+    const newPage = selectedItem.selected + 1;
+
     if (newPage >= 1) {
       setCurrentPage(newPage);
 
@@ -92,19 +103,12 @@ export function useMovies() {
     }
   }
 
-  function handleNextPage() {
-    handlePageChange(currentPage + 1);
-  }
-
-  function handlePreviousPage() {
-    handlePageChange(currentPage - 1);
-  }
-
   return {
     movies,
     searchQuery,
+    pageQuery,
+    pageCount,
     handleSearchChange,
-    handleNextPage,
-    handlePreviousPage,
+    handlePageChange,
   };
 }

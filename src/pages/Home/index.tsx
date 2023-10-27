@@ -13,9 +13,13 @@ export function Home() {
     <div className="home">
       <SearchInput onChange={handleSearchChange} />
 
-      {movies?.map(movie => (
-        <MovieCard key={movie.id} movie={movie} />
-      ))}
+      <ul className="home__movies-list">
+        {movies?.map(movie => (
+          <li key={movie.id}>
+            <MovieCard movie={movie} />
+          </li>
+        ))}
+      </ul>
 
       <footer>
         <Paginate

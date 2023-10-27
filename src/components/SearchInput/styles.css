@@ -4,9 +4,8 @@
   max-width: 100%;
   border: none;
   border-radius: 2rem;
-  padding: 1.5rem 0;
+  padding: 1.5rem 0 0 2rem;
   font-family: Abel;
-  padding-left: 2rem;
   color: var(--primary);
 }
 
@@ -17,4 +16,10 @@
 .search-input:focus {
   border: none;
   outline: 2px solid var(--primary);
+}
+
+@media screen and (max-width: 468px) {
+  .search-input {
+    padding: 0.75rem 0 0.75rem 1rem;
+  }
 }

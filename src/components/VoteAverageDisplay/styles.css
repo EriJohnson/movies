@@ -21,3 +21,15 @@
   font-family: Abel;
   font-size: 2.5rem;
 }
+
+@media screen and (max-width: 468px) {
+  .percentage-display {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .percentage-display__inner {
+    border: 0.25rem solid var(--secondary);
+    font-size: 1.25rem;
+  }
+}

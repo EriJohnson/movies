@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom';
 import { Movie } from '../../entities/Movie';
 import { formatDate } from '../../utils/formatDate';
 import VoteAverageDisplay from '../VoteAverageDisplay';
-import './styles.css';
 import GenreList from '../GenreList';
+
+import './styles.css';
 
 interface MovieCardProps {
   movie: Movie;

@@ -4,7 +4,21 @@
   margin: 0 auto;
 }
 
+.home__movies-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
 .home footer {
   display: flex;
   justify-content: center;
+  margin: 1rem 0;
+}
+
+@media screen and (max-width: 468px) {
+  .home {
+    padding: 1.5rem 1rem;
+  }
 }

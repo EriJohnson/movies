@@ -13,3 +13,10 @@
   align-items: center;
   justify-content: center;
 }
+
+@media screen and (max-width: 468px) {
+  .genre-badge {
+    border: 1px solid var(--primary);
+    font-size: 0.75rem;
+  }
+}

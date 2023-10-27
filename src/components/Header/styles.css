@@ -13,3 +13,9 @@ header {
   font-weight: 400;
   text-decoration: none;
 }
+
+@media screen and (max-width: 468px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+}

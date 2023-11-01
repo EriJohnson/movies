@@ -1,5 +1,5 @@
 .home {
-  padding: 1.5rem 4rem;
+  padding: 2.5rem 4rem;
   max-width: 1366px;
   margin: 0 auto;
 }
@@ -9,6 +9,7 @@
   flex-direction: column;
   padding: 0;
   margin: 0;
+  list-style: none;
 }
 
 .home footer {

@@ -9,6 +9,8 @@ export function Home() {
   const { movies, pageCount, pageQuery, handleSearchChange, handlePageChange } =
     useMovies();
 
+  const initialPage = pageQuery ? Number(pageQuery) - 1 : 0;
+
   return (
     <div className="home">
       <SearchInput onChange={handleSearchChange} />
@@ -23,7 +25,7 @@ export function Home() {
 
       <footer>
         <Paginate
-          initialPage={Number(pageQuery) - 1}
+          initialPage={initialPage}
           pageCount={pageCount}
           onPageChange={handlePageChange}
         />

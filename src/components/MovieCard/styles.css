@@ -23,8 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: start;
-  padding-left: 1.5rem;
-  padding-bottom: 0.25rem;
+  padding: 0 2rem 0.25rem 1.5rem;
   height: 12rem;
   background: linear-gradient(
     to bottom,
@@ -100,8 +99,7 @@
   }
 
   .movie-card__header {
-    padding-left: 1rem;
-    padding-bottom: 0.25rem;
+    padding: 0 2rem 0.25rem 1rem;
     height: 6.5rem;
   }
 
